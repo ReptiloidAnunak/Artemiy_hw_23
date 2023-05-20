@@ -8,15 +8,14 @@ def get_cmd1_result(user_query: UserQuery, file):
     with open(file) as f:
         if user_query.cmd1 == "filter":
             result = "\n".join([x for x in (filter_query(user_query.value1, f))])
-            return result
 
         elif user_query.cmd1 == "map":
             value1 = int(user_query.value1)
             result = "\n".join([x for x in (map_query(value1, f))])
-            return result
 
         elif user_query.cmd1 == "limit":
-            return "\n".join([x for x in limit_query(file, user_query.value1)])
+            result = "\n".join([x for x in limit_query(file, user_query.value1)])
+        return result
 
 def get_cmd2_result(user_query: UserQuery, cmd1_res):
     """Получает запрос пользователя и результат команды №1, возвращает результат выполнения команды №2
